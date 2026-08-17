@@ -1,0 +1,54 @@
+
+> lmty-attachment-studio@1.0.0 lmty:context /home/ubuntu/lmty-attachment-studio
+> node scripts/lmty-context-cli.mjs -- --artifact frontend.lmty --bits 4 --budget 640
+
+{
+  "command": "lmty context optimize",
+  "artifact": "frontend.lmty",
+  "mode": "external-memory",
+  "providerRequirement": "KV cache quantization requires provider ABI",
+  "layers": {
+    "system": 115,
+    "attachment": 141,
+    "evidence": 269,
+    "task": 115
+  },
+  "compression": {
+    "technique": "TurboQuant-inspired policy",
+    "quantizedBits": 4,
+    "estimatedRatio": 4
+  },
+  "selected": [
+    {
+      "id": "mem_01",
+      "label": "Project conventions",
+      "tokens": 72,
+      "relevance": 0.96,
+      "recency": 0.8,
+      "reliability": 0.98,
+      "utility": 0.93,
+      "score": 0.921
+    },
+    {
+      "id": "mem_02",
+      "label": "Visual regression evidence",
+      "tokens": 118,
+      "relevance": 0.92,
+      "recency": 0.9,
+      "reliability": 0.94,
+      "utility": 0.88,
+      "score": 0.915
+    },
+    {
+      "id": "mem_05",
+      "label": "Accessibility policy",
+      "tokens": 68,
+      "relevance": 0.75,
+      "recency": 0.68,
+      "reliability": 0.99,
+      "utility": 0.9,
+      "score": 0.795
+    }
+  ],
+  "usedTokens": 258
+}

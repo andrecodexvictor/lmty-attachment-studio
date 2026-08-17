@@ -1,0 +1,20 @@
+# Project TODO
+
+- [x] Definir o modelo de dados para datasets, sessões MAL, candidates, traces e artifacts `.lmty`.
+- [x] Criar backend tRPC para dashboard, ingestão JSONL/CSV, compilação de attachment, sessões MAL e relatórios.
+- [x] Implementar dashboard principal com attachments instalados, sessões ativas e métricas de qualidade/confiabilidade.
+- [x] Implementar tela de ingestão de dataset com upload JSONL/CSV e entrada manual de exemplos de domínio e rótulo.
+- [x] Implementar pipeline de compilação com domínio, orçamento de contexto, ferramentas permitidas, meta de qualidade e etapas visíveis.
+- [x] Implementar demonstração ao vivo de MAL com tarefas consecutivas, rota, ferramentas, capability boundary e estado persistente.
+- [x] Implementar gráfico interativo da fronteira de Pareto qualidade × tokens × complexidade.
+- [x] Implementar painel de traces e relatórios com trace_id, rota, verificadores, score e latência.
+- [x] Implementar tela de artifact `.lmty` com manifesto, política, rotas e métricas de avaliação.
+- [x] Aplicar direção visual sofisticada, responsiva e acessível à interface.
+- [x] Criar testes Vitest para fluxos críticos do backend e componentes de visualização.
+- [x] Validar a aplicação em desktop e mobile, registrar resultados e salvar checkpoint.
+- [x] Validar a referência técnica TurboQuant e documentar os limites de integração com modelos fechados.
+- [x] Implementar matrizes de relevância, memória de trabalho e política de compressão de contexto por layer.
+- [x] Criar janela de contexto configurável no attachment runtime e expor métricas de retenção, tokens e compressão.
+- [x] Implementar comandos CLI para inspecionar, otimizar e aplicar a política de contexto de um artifact `.lmty`.
+- [x] Integrar controles e visualizações de memória/contexto na interface web.
+- [x] Criar testes para os cálculos de matriz, seleção de contexto e contratos do CLI.

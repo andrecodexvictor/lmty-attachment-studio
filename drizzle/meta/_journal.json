@@ -1,5 +1,27 @@
 {
   "version": "7",
   "dialect": "mysql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1786929150798,
+      "tag": "0000_certain_infant_terrible",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1786929256267,
+      "tag": "0001_parallel_mysterio",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1786930081576,
+      "tag": "0002_powerful_jack_murdock",
+      "breakpoints": true
+    }
+  ]
 }

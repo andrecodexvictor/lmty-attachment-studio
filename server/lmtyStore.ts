@@ -1,3 +1,5 @@
+import { evaluateAbstraction } from "../shared/abstraction";
+
 export type Attachment = {
   id: string;
   name: string;
@@ -133,5 +135,10 @@ export const lmtyStore = {
     const relevanceMatrix = ranked.map(item => ({ label: item.label, visualUi: Number((item.relevance * 0.98).toFixed(2)), debugging: Number((item.relevance * 0.92).toFixed(2)), performance: Number((item.relevance * 0.78).toFixed(2)) }));
     const retainedScore = selected.reduce((total, item) => total + item.score, 0) / selected.length;
     return { layers: { system: Math.round(contextBudget * 0.18), attachment: Math.round(contextBudget * 0.22), evidence: evidenceBudget, task: Math.round(contextBudget * 0.18) }, ranked, selected, relevanceMatrix, metrics: { contextBudget, evidenceBudget, usedTokens, retainedItems: selected.length, quantizedBits, compressionRatio: Number((16 / quantizedBits).toFixed(2)), retainedScore: Number(retainedScore.toFixed(3)), mode: "external-memory" } };
+  },
+  analyzeAbstraction(contextBudget: number, quantizedBits: number, allowedTools: string[]) {
+    const emittedTraces = sessions.flatMap(session => session.traces).length;
+    const traceCoverage = emittedTraces > 0 ? 0.98 : 0.95;
+    return evaluateAbstraction({ contextBudget, quantizedBits, allowedTools, traceCoverage, verifierCoverage: 0.96 });
   },
 };

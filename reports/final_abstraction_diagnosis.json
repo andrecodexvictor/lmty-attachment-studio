@@ -1,0 +1,103 @@
+{
+  "command": "lmty abstraction diagnose",
+  "graph": {
+    "nodes": [
+      {
+        "id": "system",
+        "label": "System layer"
+      },
+      {
+        "id": "attachment",
+        "label": "Attachment policy"
+      },
+      {
+        "id": "memory",
+        "label": "External memory"
+      },
+      {
+        "id": "evidence",
+        "label": "Evidence window"
+      },
+      {
+        "id": "task",
+        "label": "Task context"
+      },
+      {
+        "id": "tools",
+        "label": "Capability boundary"
+      },
+      {
+        "id": "verifiers",
+        "label": "Verifiers"
+      },
+      {
+        "id": "trace",
+        "label": "Trace ledger"
+      }
+    ],
+    "edges": [
+      {
+        "from": "system",
+        "to": "attachment",
+        "label": "scope"
+      },
+      {
+        "from": "attachment",
+        "to": "memory",
+        "label": "retrieve"
+      },
+      {
+        "from": "memory",
+        "to": "evidence",
+        "label": "select top-k"
+      },
+      {
+        "from": "evidence",
+        "to": "task",
+        "label": "compose"
+      },
+      {
+        "from": "task",
+        "to": "tools",
+        "label": "authorize"
+      },
+      {
+        "from": "tools",
+        "to": "verifiers",
+        "label": "verify"
+      },
+      {
+        "from": "verifiers",
+        "to": "trace",
+        "label": "record"
+      },
+      {
+        "from": "trace",
+        "to": "memory",
+        "label": "refresh"
+      }
+    ]
+  },
+  "layers": {
+    "system": 115,
+    "attachment": 141,
+    "evidence": 269,
+    "task": 115
+  },
+  "dimensions": {
+    "contextBalance": 1,
+    "capabilityIsolation": 1,
+    "traceContinuity": 0.98,
+    "verifierIntegrity": 0.96,
+    "memoryEfficiency": 1
+  },
+  "hardInvariants": {
+    "budgetConserved": true,
+    "boundaryConfigured": true,
+    "traceConnected": true,
+    "verifiersConnected": true
+  },
+  "score": 0.988,
+  "satisfied": true,
+  "providerRequirement": "Internal KV cache quantization requires provider ABI"
+}

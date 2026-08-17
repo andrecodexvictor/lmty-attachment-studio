@@ -1,0 +1,36 @@
+.abstraction-grid { display:grid; grid-template-columns:1.25fr .75fr; gap:14px; }
+.graph-panel { min-height:430px; }
+.abstraction-graph { width:100%; height:310px; margin:14px 0 0; overflow:visible; }
+.graph-edge { stroke:rgba(126,232,189,.48); stroke-width:1.5; stroke-dasharray:4 5; }
+.graph-node { fill:#102622; stroke-width:1.5; }
+.graph-node.layer { stroke:#7ee8bd; }
+.graph-node.memory { stroke:#a69cff; }
+.graph-node.boundary { stroke:#f0c978; }
+.graph-node.evidence { stroke:#74afd8; }
+.graph-node-label { fill:#dff4eb; font:500 8px "DM Mono",monospace; pointer-events:none; }
+.graph-empty { height:290px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#789289; gap:8px; font-size:11px; }
+.graph-empty svg { color:#a69cff; }
+.graph-legend { display:flex; flex-wrap:wrap; gap:13px; padding-top:10px; border-top:1px solid rgba(167,221,204,.09); color:#89a29a; font:10px "DM Mono",monospace; }
+.graph-legend span { display:flex; align-items:center; gap:5px; }
+.graph-dot { width:6px; height:6px; border-radius:50%; }
+.graph-dot.layer { background:#7ee8bd; }.graph-dot.memory { background:#a69cff; }.graph-dot.boundary { background:#f0c978; }.graph-dot.evidence { background:#74afd8; }
+.diagnostic-panel { display:flex; flex-direction:column; }
+.diagnostic-score { display:flex; align-items:baseline; gap:9px; margin:17px 0 10px; }
+.diagnostic-score strong { font-size:47px; letter-spacing:-.08em; }
+.diagnostic-score span { font:10px "DM Mono",monospace; color:#7ee8bd; }
+.score-progress { height:7px !important; margin-bottom:20px; }
+.diagnostic-dimensions { display:grid; gap:0; }
+.diagnostic-dimensions div { display:flex; justify-content:space-between; border-top:1px solid rgba(167,221,204,.08); padding:10px 0; text-transform:capitalize; font-size:10px; color:#899f98; }
+.diagnostic-dimensions b { color:#ccefe0; }
+.invariants { margin-top:auto; border-top:1px solid rgba(167,221,204,.12); padding-top:13px; display:grid; gap:8px; font:10px "DM Mono",monospace; color:#8da49d; }
+.invariants > span { color:#6f8980; font-size:9px; margin-bottom:2px; }
+.invariants div { display:flex; align-items:center; gap:7px; text-transform:capitalize; }
+.invariants i { width:16px; height:16px; border-radius:4px; border:1px solid rgba(167,221,204,.16); display:grid; place-items:center; font-style:normal; color:#738a83; }
+.invariants i.passed { color:#74e3b3; border-color:rgba(116,227,179,.35); background:rgba(116,227,179,.08); }
+.graph-cli-panel { display:grid; grid-template-columns:.8fr 1.2fr; gap:30px; margin-top:14px; align-items:center; background:linear-gradient(110deg,rgba(119,103,241,.1),rgba(18,38,33,.5)); }
+.graph-cli-panel h2 { font-size:17px; margin:6px 0; }
+.graph-cli-panel p { margin:0; color:#829a92; font-size:11px; line-height:1.6; }
+.cli-stack { display:grid; gap:7px; }
+.cli-stack code { padding:10px 11px; border:1px solid rgba(166,156,255,.19); background:#0a1613; color:#c7c1ff; border-radius:7px; font:10px "DM Mono",monospace; overflow:auto; }
+@media (max-width:1020px) { .abstraction-grid { grid-template-columns:1fr; } }
+@media (max-width:620px) { .graph-cli-panel { grid-template-columns:1fr; gap:16px; }.abstraction-graph { height:250px; } }

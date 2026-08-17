@@ -17,4 +17,5 @@ export const lmtyRouter = router({
   openSession: publicProcedure.input(z.object({ attachmentId: z.string().min(1), enabledTools: z.array(z.string()) })).mutation(({ input }) => lmtyStore.openSession(input.attachmentId, input.enabledTools)),
   runTask: publicProcedure.input(z.object({ sessionId: z.string().min(1), task: z.string().min(1) })).mutation(({ input }) => lmtyStore.runTask(input.sessionId, input.task)),
   optimizeContext: publicProcedure.input(z.object({ contextBudget: z.number().int().min(256).max(8192), quantizedBits: z.number().int().min(2).max(16) })).mutation(({ input }) => lmtyStore.optimizeContext(input.contextBudget, input.quantizedBits)),
+  analyzeAbstraction: publicProcedure.input(z.object({ contextBudget: z.number().int().min(256).max(8192), quantizedBits: z.number().int().min(2).max(16), allowedTools: z.array(z.string()).min(1) })).mutation(({ input }) => lmtyStore.analyzeAbstraction(input.contextBudget, input.quantizedBits, input.allowedTools)),
 });

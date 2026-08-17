@@ -18,3 +18,10 @@
 - [x] Implementar comandos CLI para inspecionar, otimizar e aplicar a política de contexto de um artifact `.lmty`.
 - [x] Integrar controles e visualizações de memória/contexto na interface web.
 - [x] Criar testes para os cálculos de matriz, seleção de contexto e contratos do CLI.
+- [x] Definir métricas e cenários de aceitação para qualidade da camada de abstração.
+- [x] Implementar grafo de dependências entre layers, memória, políticas, tools e verificadores.
+- [x] Implementar grafo de fluxos de contexto e diagnóstico de gargalos de abstração.
+- [x] Ampliar a CLI com comandos para grafo, diagnóstico e relatório da camada de abstração.
+- [x] Integrar visualizações dos grafos e do diagnóstico na plataforma web.
+- [x] Executar iterações mensuráveis de cenários e registrar os critérios satisfeitos.
+- [x] Produzir e verificar PDF lúdico de demonstração da plataforma e dos resultados.

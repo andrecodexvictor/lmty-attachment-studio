@@ -11,6 +11,9 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "lmty:context": "node scripts/lmty-context-cli.mjs",
+    "lmty:abstraction": "node scripts/lmty-abstraction-cli.mjs",
+    "lmty:scenarios": "node scripts/run-abstraction-scenarios.mjs",
+    "lmty:optimize-abstraction": "node scripts/optimize-abstraction.mjs",
     "db:push": "drizzle-kit generate && drizzle-kit migrate"
   },
   "dependencies": {

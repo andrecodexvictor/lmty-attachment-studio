@@ -22,4 +22,11 @@ describe("lmtyStore", () => {
     expect(result.metrics.usedTokens).toBeLessThanOrEqual(result.metrics.evidenceBudget);
     expect(result.selected.length).toBeGreaterThan(0);
   });
+
+  it("accepts a bounded abstraction graph with trace and verifier continuity", () => {
+    const result = lmtyStore.analyzeAbstraction(640, 4, ["filesystem", "test_runner", "typecheck"]);
+    expect(result.score).toBeGreaterThanOrEqual(0.9);
+    expect(result.satisfied).toBe(true);
+    expect(result.hardInvariants.budgetConserved).toBe(true);
+  });
 });

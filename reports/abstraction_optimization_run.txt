@@ -1,0 +1,2398 @@
+
+> lmty-attachment-studio@1.0.0 lmty:optimize-abstraction /home/ubuntu/lmty-attachment-studio
+> node scripts/optimize-abstraction.mjs
+
+{
+  "generatedAt": "2026-08-17T01:38:31.472Z",
+  "objective": "maximize structural score, compression adequacy and compact context budget",
+  "totalTrials": 45,
+  "acceptedTrials": 30,
+  "rejectedTrials": 15,
+  "selected": {
+    "budget": 384,
+    "bits": 4,
+    "tools": "filesystem,test_runner",
+    "result": {
+      "command": "lmty abstraction diagnose",
+      "graph": {
+        "nodes": [
+          {
+            "id": "system",
+            "label": "System layer"
+          },
+          {
+            "id": "attachment",
+            "label": "Attachment policy"
+          },
+          {
+            "id": "memory",
+            "label": "External memory"
+          },
+          {
+            "id": "evidence",
+            "label": "Evidence window"
+          },
+          {
+            "id": "task",
+            "label": "Task context"
+          },
+          {
+            "id": "tools",
+            "label": "Capability boundary"
+          },
+          {
+            "id": "verifiers",
+            "label": "Verifiers"
+          },
+          {
+            "id": "trace",
+            "label": "Trace ledger"
+          }
+        ],
+        "edges": [
+          {
+            "from": "system",
+            "to": "attachment",
+            "label": "scope"
+          },
+          {
+            "from": "attachment",
+            "to": "memory",
+            "label": "retrieve"
+          },
+          {
+            "from": "memory",
+            "to": "evidence",
+            "label": "select top-k"
+          },
+          {
+            "from": "evidence",
+            "to": "task",
+            "label": "compose"
+          },
+          {
+            "from": "task",
+            "to": "tools",
+            "label": "authorize"
+          },
+          {
+            "from": "tools",
+            "to": "verifiers",
+            "label": "verify"
+          },
+          {
+            "from": "verifiers",
+            "to": "trace",
+            "label": "record"
+          },
+          {
+            "from": "trace",
+            "to": "memory",
+            "label": "refresh"
+          }
+        ]
+      },
+      "layers": {
+        "system": 69,
+        "attachment": 84,
+        "evidence": 161,
+        "task": 69
+      },
+      "dimensions": {
+        "contextBalance": 1,
+        "capabilityIsolation": 1,
+        "traceContinuity": 0.98,
+        "verifierIntegrity": 0.96,
+        "memoryEfficiency": 1
+      },
+      "hardInvariants": {
+        "budgetConserved": true,
+        "boundaryConfigured": true,
+        "traceConnected": true,
+        "verifiersConnected": true
+      },
+      "score": 0.988,
+      "satisfied": true,
+      "providerRequirement": "Internal KV cache quantization requires provider ABI"
+    },
+    "objective": 0.993
+  },
+  "frontier": [
+    {
+      "budget": 384,
+      "bits": 4,
+      "tools": "filesystem,test_runner",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 69,
+          "attachment": 84,
+          "evidence": 161,
+          "task": 69
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 1
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.988,
+        "satisfied": true,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      },
+      "objective": 0.993
+    },
+    {
+      "budget": 384,
+      "bits": 4,
+      "tools": "filesystem,test_runner,typecheck",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 69,
+          "attachment": 84,
+          "evidence": 161,
+          "task": 69
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 1
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.988,
+        "satisfied": true,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      },
+      "objective": 0.993
+    },
+    {
+      "budget": 384,
+      "bits": 4,
+      "tools": "filesystem,test_runner,typecheck,visual_verify",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 69,
+          "attachment": 84,
+          "evidence": 161,
+          "task": 69
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 1
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.988,
+        "satisfied": true,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      },
+      "objective": 0.993
+    },
+    {
+      "budget": 512,
+      "bits": 4,
+      "tools": "filesystem,test_runner",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 92,
+          "attachment": 113,
+          "evidence": 215,
+          "task": 92
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 1
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.988,
+        "satisfied": true,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      },
+      "objective": 0.963
+    },
+    {
+      "budget": 512,
+      "bits": 4,
+      "tools": "filesystem,test_runner,typecheck",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 92,
+          "attachment": 113,
+          "evidence": 215,
+          "task": 92
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 1
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.988,
+        "satisfied": true,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      },
+      "objective": 0.963
+    },
+    {
+      "budget": 512,
+      "bits": 4,
+      "tools": "filesystem,test_runner,typecheck,visual_verify",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 92,
+          "attachment": 113,
+          "evidence": 215,
+          "task": 92
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 1
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.988,
+        "satisfied": true,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      },
+      "objective": 0.963
+    }
+  ],
+  "rejected": [
+    {
+      "budget": 384,
+      "bits": 16,
+      "tools": "filesystem,test_runner",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 69,
+          "attachment": 84,
+          "evidence": 161,
+          "task": 69
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 384,
+      "bits": 16,
+      "tools": "filesystem,test_runner,typecheck",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 69,
+          "attachment": 84,
+          "evidence": 161,
+          "task": 69
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 384,
+      "bits": 16,
+      "tools": "filesystem,test_runner,typecheck,visual_verify",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 69,
+          "attachment": 84,
+          "evidence": 161,
+          "task": 69
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 512,
+      "bits": 16,
+      "tools": "filesystem,test_runner",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 92,
+          "attachment": 113,
+          "evidence": 215,
+          "task": 92
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 512,
+      "bits": 16,
+      "tools": "filesystem,test_runner,typecheck",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 92,
+          "attachment": 113,
+          "evidence": 215,
+          "task": 92
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 512,
+      "bits": 16,
+      "tools": "filesystem,test_runner,typecheck,visual_verify",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 92,
+          "attachment": 113,
+          "evidence": 215,
+          "task": 92
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 640,
+      "bits": 16,
+      "tools": "filesystem,test_runner",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 115,
+          "attachment": 141,
+          "evidence": 269,
+          "task": 115
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 640,
+      "bits": 16,
+      "tools": "filesystem,test_runner,typecheck",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 115,
+          "attachment": 141,
+          "evidence": 269,
+          "task": 115
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 640,
+      "bits": 16,
+      "tools": "filesystem,test_runner,typecheck,visual_verify",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 115,
+          "attachment": 141,
+          "evidence": 269,
+          "task": 115
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 768,
+      "bits": 16,
+      "tools": "filesystem,test_runner",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 138,
+          "attachment": 169,
+          "evidence": 323,
+          "task": 138
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 768,
+      "bits": 16,
+      "tools": "filesystem,test_runner,typecheck",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 138,
+          "attachment": 169,
+          "evidence": 323,
+          "task": 138
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 768,
+      "bits": 16,
+      "tools": "filesystem,test_runner,typecheck,visual_verify",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 138,
+          "attachment": 169,
+          "evidence": 323,
+          "task": 138
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 1024,
+      "bits": 16,
+      "tools": "filesystem,test_runner",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 184,
+          "attachment": 225,
+          "evidence": 430,
+          "task": 184
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 1024,
+      "bits": 16,
+      "tools": "filesystem,test_runner,typecheck",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 184,
+          "attachment": 225,
+          "evidence": 430,
+          "task": 184
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    },
+    {
+      "budget": 1024,
+      "bits": 16,
+      "tools": "filesystem,test_runner,typecheck,visual_verify",
+      "result": {
+        "command": "lmty abstraction diagnose",
+        "graph": {
+          "nodes": [
+            {
+              "id": "system",
+              "label": "System layer"
+            },
+            {
+              "id": "attachment",
+              "label": "Attachment policy"
+            },
+            {
+              "id": "memory",
+              "label": "External memory"
+            },
+            {
+              "id": "evidence",
+              "label": "Evidence window"
+            },
+            {
+              "id": "task",
+              "label": "Task context"
+            },
+            {
+              "id": "tools",
+              "label": "Capability boundary"
+            },
+            {
+              "id": "verifiers",
+              "label": "Verifiers"
+            },
+            {
+              "id": "trace",
+              "label": "Trace ledger"
+            }
+          ],
+          "edges": [
+            {
+              "from": "system",
+              "to": "attachment",
+              "label": "scope"
+            },
+            {
+              "from": "attachment",
+              "to": "memory",
+              "label": "retrieve"
+            },
+            {
+              "from": "memory",
+              "to": "evidence",
+              "label": "select top-k"
+            },
+            {
+              "from": "evidence",
+              "to": "task",
+              "label": "compose"
+            },
+            {
+              "from": "task",
+              "to": "tools",
+              "label": "authorize"
+            },
+            {
+              "from": "tools",
+              "to": "verifiers",
+              "label": "verify"
+            },
+            {
+              "from": "verifiers",
+              "to": "trace",
+              "label": "record"
+            },
+            {
+              "from": "trace",
+              "to": "memory",
+              "label": "refresh"
+            }
+          ]
+        },
+        "layers": {
+          "system": 184,
+          "attachment": 225,
+          "evidence": 430,
+          "task": 184
+        },
+        "dimensions": {
+          "contextBalance": 1,
+          "capabilityIsolation": 1,
+          "traceContinuity": 0.98,
+          "verifierIntegrity": 0.96,
+          "memoryEfficiency": 0.25
+        },
+        "hardInvariants": {
+          "budgetConserved": true,
+          "boundaryConfigured": true,
+          "traceConnected": true,
+          "verifiersConnected": true
+        },
+        "score": 0.868,
+        "satisfied": false,
+        "providerRequirement": "Internal KV cache quantization requires provider ABI"
+      }
+    }
+  ]
+}

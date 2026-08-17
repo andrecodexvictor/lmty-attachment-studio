@@ -1,0 +1,9 @@
+flowchart LR
+  system[System layer] -->|scope| attachment[Attachment policy]
+  attachment[Attachment policy] -->|retrieve| memory[External memory]
+  memory[External memory] -->|select top-k| evidence[Evidence window]
+  evidence[Evidence window] -->|compose| task[Task context]
+  task[Task context] -->|authorize| tools[Capability boundary]
+  tools[Capability boundary] -->|verify| verifiers[Verifiers]
+  verifiers[Verifiers] -->|record| trace[Trace ledger]
+  trace[Trace ledger] -->|refresh| memory[External memory]

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import "./abstraction.css";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
@@ -6,12 +7,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { trpc } from "@/lib/trpc";
 import { cn } from "@/lib/utils";
 import { toParetoData } from "@/lib/pareto";
-import { Activity, ArrowUpRight, Binary, Boxes, Braces, Check, ChevronRight, CircleDot, Clock3, Command, Database, FileJson2, Gauge, Layers3, LineChart, MemoryStick, Network, PanelLeft, Play, Plus, ScanSearch, ShieldCheck, Sparkles, TerminalSquare, Upload, WandSparkles } from "lucide-react";
+import { Activity, ArrowUpRight, Binary, Boxes, Braces, Check, ChevronRight, CircleDot, Clock3, Command, Database, FileJson2, Gauge, GitFork, Layers3, LineChart, MemoryStick, Network, PanelLeft, Play, Plus, ScanSearch, ShieldCheck, Sparkles, TerminalSquare, Upload, WandSparkles } from "lucide-react";
 import { ChangeEvent, useMemo, useState } from "react";
 import { Scatter, ScatterChart, Tooltip, XAxis, YAxis, ZAxis, ResponsiveContainer } from "recharts";
 import { toast } from "sonner";
 
-type View = "overview" | "ingest" | "compile" | "mal" | "memory" | "pareto" | "traces" | "artifact";
+type View = "overview" | "ingest" | "compile" | "mal" | "memory" | "abstraction" | "pareto" | "traces" | "artifact";
 
 const navigation: { id: View; label: string; icon: typeof Layers3 }[] = [
   { id: "overview", label: "Overview", icon: Layers3 },
@@ -19,6 +20,7 @@ const navigation: { id: View; label: string; icon: typeof Layers3 }[] = [
   { id: "compile", label: "Attachment Compiler", icon: WandSparkles },
   { id: "mal", label: "MAL Live Session", icon: Activity },
   { id: "memory", label: "Memory & Context", icon: MemoryStick },
+  { id: "abstraction", label: "Abstraction Graph", icon: GitFork },
   { id: "pareto", label: "Pareto Frontier", icon: LineChart },
   { id: "traces", label: "Traces & Reports", icon: ScanSearch },
   { id: "artifact", label: "Artifact Inspector", icon: FileJson2 },
@@ -26,6 +28,7 @@ const navigation: { id: View; label: string; icon: typeof Layers3 }[] = [
 
 const tools = ["browser", "test_runner", "typecheck", "filesystem", "visual_verify"];
 const steps = ["Capability manifold", "Dataset validation", "Policy candidates", "Pareto selection", "Artifact packaging"];
+const graphCoordinates: Record<string, [number, number]> = { system: [55, 155], attachment: [156, 74], memory: [280, 74], evidence: [402, 74], task: [510, 155], tools: [402, 245], verifiers: [280, 245], trace: [156, 245] };
 
 function Metric({ label, value, detail, icon: Icon }: { label: string; value: string; detail: string; icon: typeof Gauge }) {
   return <div className="metric-card"><div className="metric-label"><span>{label}</span><Icon size={16} /></div><strong>{value}</strong><p>{detail}</p></div>;
@@ -64,6 +67,7 @@ export default function Home() {
   const openSession = trpc.lmty.openSession.useMutation({ onSuccess: data => { setSessionId(data.id); toast.success("MAL session opened"); utils.lmty.snapshot.invalidate(); } });
   const runTask = trpc.lmty.runTask.useMutation({ onSuccess: () => { toast.success("Trace emitted"); utils.lmty.snapshot.invalidate(); } });
   const optimize = trpc.lmty.optimizeContext.useMutation();
+  const abstraction = trpc.lmty.analyzeAbstraction.useMutation();
 
   const data = snapshot.data;
   const attachment = data?.attachments[0];
@@ -106,6 +110,7 @@ export default function Home() {
     runTask.mutate({ sessionId, task });
   };
   const runOptimizer = () => optimize.mutate({ contextBudget, quantizedBits: bits });
+  const runAbstraction = () => abstraction.mutate({ contextBudget, quantizedBits: bits, allowedTools: selectedTools });
 
   return <div className="app-shell">
     <aside className={cn("sidebar", !sidebarOpen && "collapsed")}>
@@ -150,6 +155,13 @@ export default function Home() {
           <section className="memory-grid"><div className="panel context-control"><span className="eyebrow">MEMORY POLICY</span><h2>Layered context window</h2><div className="policy-controls"><div><Label>Attachment budget <b>{contextBudget} tokens</b></Label><input className="range" type="range" min="256" max="1536" step="32" value={contextBudget} onChange={event => setContextBudget(Number(event.target.value))} /></div><div><Label>Quantized bits <b>{bits}-bit</b></Label><input className="range" type="range" min="2" max="8" step="1" value={bits} onChange={event => setBits(Number(event.target.value))} /></div></div><div className="layer-window">{Object.entries(contextPlan?.layers ?? { system: Math.round(contextBudget * 0.18), attachment: Math.round(contextBudget * 0.22), evidence: Math.round(contextBudget * 0.42), task: Math.round(contextBudget * 0.18) }).map(([key, value]) => <div key={key}><span>{key}</span><i style={{ width: `${(Number(value) / contextBudget) * 100}%` }} /><b>{String(value)}t</b></div>)}</div><div className="cli-command"><TerminalSquare size={17} /><code>lmty context optimize --artifact {attachment?.name ?? "frontend.lmty"} --bits {bits} --budget {contextBudget}</code></div></div>
           <div className="panel matrix-panel"><div className="panel-head"><div><span className="eyebrow">RELEVANCE MATRIX R</span><h2>Task × memory alignment</h2></div><StatusPill tone="violet">external-memory</StatusPill></div><div className="matrix">{(contextPlan?.relevanceMatrix ?? []).length ? <><div className="matrix-row matrix-header"><span>Memory item</span><span>visual_ui</span><span>debugging</span><span>performance</span></div>{(contextPlan?.relevanceMatrix ?? []).map(row => <div className="matrix-row" key={row.label}><b>{row.label}</b>{[row.visualUi, row.debugging, row.performance].map((score, index) => <span key={index} className="matrix-cell" style={{ "--heat": score } as React.CSSProperties}>{score}</span>)}</div>)}</> : <div className="matrix-empty">Run the optimizer to materialize R.</div>}</div></div></section>
           {contextPlan && <section className="memory-results"><Metric label="Compression ratio" value={`${contextPlan.metrics.compressionRatio}×`} detail={`${contextPlan.metrics.quantizedBits}-bit external vector policy`} icon={Binary} /><Metric label="Retained context" value={`${contextPlan.metrics.usedTokens}t`} detail={`${contextPlan.metrics.retainedItems} evidence items selected`} icon={MemoryStick} /><Metric label="Retained score" value={`${Math.round(contextPlan.metrics.retainedScore * 100)}%`} detail="Weighted relevance × recency × reliability" icon={Gauge} /><Metric label="Runtime mode" value="B0/B1" detail="No internal KV cache access assumed" icon={ShieldCheck} /></section>}
+        </>}
+
+        {view === "abstraction" && <>
+          <SectionTitle eyebrow="ABSTRACTION DIAGNOSTICS" title="A model attachment as a closed system." description="Trace the route from policy to memory, task, capability boundary, verification and feedback. The score evaluates harness structure, not model intelligence." action={<Button className="primary-action" onClick={runAbstraction} disabled={abstraction.isPending}><GitFork size={16} /> {abstraction.isPending ? "Tracing…" : "Run graph diagnosis"}</Button>} />
+          <section className="abstraction-grid"><div className="panel graph-panel"><div className="panel-head"><div><span className="eyebrow">CONTROL FLOW GRAPH</span><h2>Attachment feedback loop</h2></div><StatusPill tone={abstraction.data?.satisfied ? "mint" : "slate"}>{abstraction.data?.satisfied ? "criteria satisfied" : "awaiting run"}</StatusPill></div>{abstraction.data ? <svg className="abstraction-graph" viewBox="0 0 570 320" role="img" aria-label="Grafo de abstração do attachment LMTY"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7ee8bd" /></marker></defs>{abstraction.data.edges.map(edge => { const from = graphCoordinates[edge.from]; const to = graphCoordinates[edge.to]; return <line key={`${edge.from}-${edge.to}`} x1={from[0]} y1={from[1]} x2={to[0]} y2={to[1]} className="graph-edge" markerEnd="url(#arrow)" />; })}{abstraction.data.nodes.map(node => { const point = graphCoordinates[node.id]; return <g key={node.id} transform={`translate(${point[0]}, ${point[1]})`}><circle r="30" className={`graph-node ${node.category}`} /><text className="graph-node-label" y="4" textAnchor="middle">{node.label.split(" ")[0]}</text></g>; })}</svg> : <div className="graph-empty"><GitFork size={25} /><p>Run the diagnostic to materialize the control flow graph.</p></div>}<div className="graph-legend"><span><i className="graph-dot layer" />layer</span><span><i className="graph-dot memory" />memory</span><span><i className="graph-dot boundary" />boundary</span><span><i className="graph-dot evidence" />evidence</span></div></div>
+          <div className="panel diagnostic-panel"><span className="eyebrow">STRUCTURAL SCORE</span><div className="diagnostic-score"><strong>{abstraction.data ? `${Math.round(abstraction.data.score * 100)}%` : "—"}</strong><span>{abstraction.data?.satisfied ? "accepted" : "run required"}</span></div><Progress value={(abstraction.data?.score ?? 0) * 100} className="score-progress" /><div className="diagnostic-dimensions">{Object.entries(abstraction.data?.dimensions ?? {}).map(([key, value]) => <div key={key}><span>{key.replace(/([A-Z])/g, " $1")}</span><b>{Math.round(Number(value) * 100)}%</b></div>)}</div><div className="invariants"><span>HARD INVARIANTS</span>{Object.entries(abstraction.data?.hardInvariants ?? {}).map(([key, value]) => <div key={key}><i className={value ? "passed" : ""}>{value ? <Check size={11} /> : "–"}</i>{key.replace(/([A-Z])/g, " $1")}</div>)}</div></div></section>
+          <section className="panel graph-cli-panel"><div><span className="eyebrow">CLI PARITY</span><h2>Same graph. Same contract.</h2><p>The web surface and the CLI use the same topology and acceptance dimensions. Run the commands below to regenerate the diagnostic outside the browser.</p></div><div className="cli-stack"><code>pnpm lmty:abstraction -- diagnose --budget {contextBudget} --bits {bits}</code><code>pnpm lmty:abstraction -- graph --format mermaid</code><code>pnpm lmty:scenarios</code></div></section>
         </>}
 
         {view === "pareto" && <>

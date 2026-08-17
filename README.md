@@ -54,6 +54,12 @@ O sistema usa memória externa, não acesso implícito ao KV cache interno. A in
 
 O projeto possui testes Vitest para store, contrato de CLI, grafo de abstração e transformação Pareto. A validação mais recente contém **9 testes aprovados**, checagem TypeScript e build de produção bem-sucedidos.
 
+## Habilidade reutilizável
+
+O processo completo foi empacotado em [`skills/lmty-attachment-engineering`](skills/lmty-attachment-engineering/SKILL.md). A habilidade permite repetir o fluxo de estruturação, runtime L0/L1, política matemática, CLI, Studio, avaliação, documentação e publicação em outro projeto LMTY.
+
+Ela inclui um template de artifact, um scaffold determinístico de workspace, um validador de relatório de abstração, referências matemáticas e um checklist de release. Para importar a habilidade no ambiente Manus, use o arquivo `SKILL.md` do pacote gerado.
+
 ## Continuidade com o POC
 
 O [POC LMTY](https://github.com/andrecodexvictor/lmty-poc) contém o runtime Python L0/L1, kernels leves em C/Rust, benchmark de coding, casos de uso MAL, auditoria McCabe e relatórios técnicos. O Studio torna esses conceitos visíveis e gerenciáveis em uma aplicação web.

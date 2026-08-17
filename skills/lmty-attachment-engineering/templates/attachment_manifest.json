@@ -1,0 +1,19 @@
+{
+  "name": "domain-specialization.lmty",
+  "version": "0.1.0",
+  "abi": "lmty-attachment/0.1",
+  "domain": "Replace with domain",
+  "minimum_access": "B0",
+  "preferred_backend": "behavioral-stateful",
+  "context_window": {
+    "policy": "layered",
+    "external_memory": "enabled",
+    "kv_cache": "provider_abi_required"
+  },
+  "policy": {
+    "context_budget": 640,
+    "allowed_tools": ["filesystem", "test_runner", "typecheck"]
+  },
+  "verification": ["typecheck", "scoped_tests", "task_specific"]
+}
+

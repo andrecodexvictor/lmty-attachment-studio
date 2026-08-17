@@ -29,3 +29,7 @@
 - [x] Atualizar o README da plataforma com arquitetura, CLI, grafo e critérios de aceitação.
 - [x] Atualizar a documentação do POC anterior com conexão explícita à plataforma LMTY Studio.
 - [x] Revisar estados Git, criar commits e publicar mudanças pendentes no GitHub.
+- [x] Criar uma habilidade reutilizável para estruturar, implementar, avaliar e documentar um projeto LMTY.
+- [x] Adicionar templates, scripts e referências reutilizáveis à habilidade.
+- [x] Validar o pacote da habilidade e registrar instruções de uso.
+- [ ] Publicar a habilidade e todas as alterações pendentes no GitHub.

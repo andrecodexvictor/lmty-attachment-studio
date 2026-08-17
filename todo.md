@@ -25,7 +25,7 @@
 - [x] Integrar visualizações dos grafos e do diagnóstico na plataforma web.
 - [x] Executar iterações mensuráveis de cenários e registrar os critérios satisfeitos.
 - [x] Produzir e verificar PDF lúdico de demonstração da plataforma e dos resultados.
-- [ ] Documentar a matemática do LMTY em níveis baixo, médio e alto.
-- [ ] Atualizar o README da plataforma com arquitetura, CLI, grafo e critérios de aceitação.
-- [ ] Atualizar a documentação do POC anterior com conexão explícita à plataforma LMTY Studio.
-- [ ] Revisar estados Git, criar commits e publicar mudanças pendentes no GitHub.
+- [x] Documentar a matemática do LMTY em níveis baixo, médio e alto.
+- [x] Atualizar o README da plataforma com arquitetura, CLI, grafo e critérios de aceitação.
+- [x] Atualizar a documentação do POC anterior com conexão explícita à plataforma LMTY Studio.
+- [x] Revisar estados Git, criar commits e publicar mudanças pendentes no GitHub.

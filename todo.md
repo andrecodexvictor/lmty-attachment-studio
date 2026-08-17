@@ -32,4 +32,4 @@
 - [x] Criar uma habilidade reutilizável para estruturar, implementar, avaliar e documentar um projeto LMTY.
 - [x] Adicionar templates, scripts e referências reutilizáveis à habilidade.
 - [x] Validar o pacote da habilidade e registrar instruções de uso.
-- [ ] Publicar a habilidade e todas as alterações pendentes no GitHub.
+- [x] Publicar a habilidade e todas as alterações pendentes no GitHub.
